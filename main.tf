@@ -19,5 +19,5 @@ resource "null_resource" "example" {
 
 # Output to display after the resource is created
 output "test_output" {
-  value = "Terraform null resource executed successfully!"
+  value = "Terraform null resource executed successfully!!!"
 }
