@@ -1,4 +1,3 @@
--- test_aws_resources.sql
 select 
   title,
   account_id,
