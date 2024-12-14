@@ -1,4 +1,3 @@
--- test_s3_buckets.sql
 select 
   name,
   creation_date,
