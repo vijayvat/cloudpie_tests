@@ -1,4 +1,3 @@
--- test_aws_instances.sql
 select 
   instance_id,
   instance_type,
