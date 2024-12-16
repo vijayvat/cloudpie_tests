@@ -1,10 +1,9 @@
 select 
   case 
     when count(*) = 0 then 
-      -- All tasks have required tags, so make query fail
-      (select 1/0)  -- This forces error/non-zero exit
+      (select 1/0)
     else 
-      count(*) -- Return count of non-compliant tasks
+      count(*)
   end as non_compliant_count
 from aws_ecs_task 
 where launch_type = 'FARGATE'
