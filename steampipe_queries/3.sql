@@ -1,10 +1,27 @@
+with task_check as (
+  select count(*) as total_tasks 
+  from aws_ecs_task
+  where launch_type = 'FARGATE'
+),
+compliance_check as (
+  select 
+    task_arn,
+    task_definition_arn,
+    cluster_arn,
+    tags,
+    created_at
+  from aws_ecs_task
+  where launch_type = 'FARGATE'
+    and not tags ?& array['Environment', 'Owner', 'CostCenter']
+)
 select 
-  name,
-  creation_date,
-  versioning_enabled,
-  server_side_encryption_configuration,
-  region
-from 
-  aws_s3_bucket
-order by 
-  creation_date desc;
+  case 
+    when (select total_tasks from task_check) = 0 
+    then 'WARNING: No Fargate tasks found to check'
+    else task_arn || ' is missing required tags'
+  end as finding,
+  task_definition_arn,
+  cluster_arn,
+  tags,
+  created_at
+from compliance_check;
