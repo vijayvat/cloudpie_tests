@@ -1,7 +1,1 @@
-select 
-  task_arn,
-  region,
-  tags
-from aws_ecs_task 
-where region = 'us-west-2'
-  and tags ?& array['Environment', 'Owner', 'CostCenter'];
+SELECT public_ip, allocation_id, tags FROM aws_vpc_eip WHERE association_id IS NULL;
