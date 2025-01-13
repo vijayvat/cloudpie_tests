@@ -30,15 +30,4 @@ provider "google" {
 
 data "google_client_config" "current" {}
 
-output "project_id" {
-  value = data.google_client_config.current.project
-}
-
-output "auth_account" {
-  value = data.google_client_config.current.account
-}
-
-output "token_scopes" {
-  value = data.google_client_config.current.token_scopes
-}
 
