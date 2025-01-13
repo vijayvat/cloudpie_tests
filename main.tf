@@ -21,3 +21,24 @@ resource "null_resource" "example" {
 output "test_output" {
   value = "Terraform null resource executed successfully!!!"
 }
+
+
+provider "google" {
+  region  = "us-central1"       # Replace with your desired region
+  zone    = "us-central1-a"     # Replace with your desired zone
+}
+
+data "google_client_config" "current" {}
+
+output "project_id" {
+  value = data.google_client_config.current.project
+}
+
+output "auth_account" {
+  value = data.google_client_config.current.account
+}
+
+output "token_scopes" {
+  value = data.google_client_config.current.token_scopes
+}
+
