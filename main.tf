@@ -13,7 +13,7 @@ terraform {
 # Create a simple null resource
 resource "null_resource" "example" {
   provisioner "local-exec" {
-    command = "echo 'Hello from Terraform!'"
+    command = "echo 'Howdy and Hello from Terraform!'"
   }
 }
 
