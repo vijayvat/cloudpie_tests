@@ -1,8 +1,5 @@
 provider "azurerm" {
   features {}
-  resource_provider_registrations {
-    mode = "skip"
-  }
   skip_provider_registration = true
   use_cli = false
   use_msi = false
